@@ -1,0 +1,571 @@
+[v-cloak] {
+    display: none;
+}
+
+#sideNavBox {
+    display:none;
+}
+
+#ClassifiedsMaster {
+    width: 100%;
+    float: left;
+
+    div {
+        width: 100%;
+        float: left;
+    }
+
+    #SideNav {
+        width: 13%;
+        margin-right: 20px;
+
+        .buttonMenu {
+            margin-bottom: 10px;
+        }
+
+        .section
+        {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid silver;
+            width: 90%;
+
+            .sectionTitle
+            {
+                font-weight: bold;
+                position: relative;
+
+                .ShowHideArrow {
+                    position: absolute;
+                    top: 0px;
+                    right: 3px;
+                    display: none;
+                    width: 20px;
+                    cursor: pointer;
+
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+            
+            .active {
+                background-color: silver !important;
+                font-weight: bold;
+                color: white;
+            }
+
+            .sectionItems
+            {
+                .edit {
+                    position: absolute;
+                    right: 5px;
+                    top: 7px;
+                    width: 22px;
+                    height: 19px;
+                    cursor: pointer;
+                    border: 1px solid white;
+
+                    &:hover {
+                        border: 1px solid silver;
+                    }
+                }
+
+                .title
+                {
+                    cursor: pointer;
+                    padding: 10px;
+                    position: relative;
+                    width: 90%;
+
+                    &:hover
+                    {
+                        background-color: #efefef;
+                        color: black;
+                    }                    
+                }
+
+                .subcategories
+                {
+                    .sub
+                    {
+                        position: relative;
+                        padding: 5px;
+                        padding-left: 30px;
+                        width: 80%;
+                        cursor: pointer;
+
+                        &:hover
+                        {
+                            background-color: #efefef;
+                        }
+
+                        .edit {
+                            top: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #Main {
+        width: 83%;
+
+        #Search {
+            input[type='text'] {
+                width: 40%;
+                height: 25px;
+            }
+        }
+
+        .ItemResults
+        {
+            width: 100%;
+            margin-bottom: 20px;
+
+            .moreContainer {
+                margin-top: 10px;
+            }
+
+            .header
+            {
+                font-weight: bold;
+                font-size: 16pt;
+                padding: 10px;
+            }
+
+            #MessageLabel, .norecords {
+                padding: 10px;
+                width: 90%;
+                float: left;
+                background-color: pink;
+                border:1px solid red;
+                font-weight: bold;
+            }
+
+            .item
+            {
+                position: relative;
+                width: 20%;
+                margin-right: 3px;
+                margin-top: 3px;
+                padding: 10px;
+                height: 100px;
+                border: 1px solid silver;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #efefef;
+                }
+
+                .sold, .expired
+                {
+                    position: absolute;
+                    top: 5px;
+                    left: -5px;
+                    padding: 10px;
+                    background-color: pink;
+                    border: 1px solid red;
+                    font-weight: bold;
+                    width: 35%;
+                }
+
+                .admin
+                {
+                    position: absolute;
+                    top: 3px;
+                    right: 0px;
+                    cursor: pointer;
+                    z-index: 100;
+                    width: 50px;
+
+                    .edit
+                    {
+                        width: 20px;
+                        margin-left: 3px;
+                    }
+                }
+
+                .thumbnail
+                {
+                    overflow-y: hidden;
+                    height: 100px;
+                    width: 50%;
+                    margin-right: 5px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .info
+                {
+                    width: 45%;
+                    margin-top: 10px;
+
+                    .title {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    #SingleItem {
+        position: fixed;
+        top: -10px;
+        left: -10px;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(128, 128, 128, 0.5);
+
+        #Form, #View {
+            position: relative;
+            background-color: white;
+            opacity: 1.0 !important;
+            padding: 20px;
+            padding-bottom: 60px;
+            width: 60%;
+            margin-left: 20%;
+            margin-top: 25px;
+            margin-bottom: 23px;
+
+            input[type="file"] {
+                width: 100%;
+            }
+
+            input[type="text"], select {
+                width: 75%;
+                height: 25px;
+            }
+
+            #FormButtons {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                width: 20%;
+            }
+
+            #CloseBtn
+            {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+
+            .column
+            {
+                width: 33%;
+            }
+
+            .fieldContainer {
+                margin: 5px 0px;
+
+                textarea {
+                    width: 90%;
+                    height: 80px;
+                }                
+            }
+
+            #ImageContainer {
+                img {
+                    width: 100% !important;
+                }
+
+                #FirstImage {
+                    width: 100%;
+                    height: 600px;
+                    overflow-y: hidden;
+                }
+
+                .attachments {
+                    .attachmentContainer {
+                        width: 23%;
+                        height: 100px;
+                        margin-right: 5px;
+                        margin-top: 5px;
+
+                        .attachment {
+                            position: relative;
+                            width: 100%;
+                            overflow-y: hidden;
+                            max-height: 100px;
+                            border: 1px solid silver;
+
+                            .delete {
+                                position: absolute;
+                                top: 1px;
+                                right: 1px;
+                                cursor: pointer;
+                                width: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #InfoView {
+                img {
+                    width: 100% !important;
+                }
+
+                #FirstImage {
+                    width: 100%;
+                    height: 600px;
+                    overflow-y: hidden;
+                }
+
+                .attachments {
+                    .attachment {
+                        position: relative;
+                        width: 23%;
+                        overflow-y: hidden;
+                        width: 23%;
+                        height: 100px;
+                        margin-right: 5px;
+                        margin-top: 5px;
+                        border: 1px solid silver;
+
+                        .delete {
+                            position: absolute;
+                            top: 1px;
+                            right: 1px;
+                            cursor: pointer;
+                            width: 20px;
+                        }
+                    }
+                }
+
+                fieldset {
+                    padding: 10px;
+
+                    legend {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .half
+            {
+                width: 45%;
+                padding: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1515px) {
+    #ClassifiedsMaster {
+        #SingleItem {
+            #Form, #View {
+                #FormButtons {
+                    width: 30%;
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 1340px) {
+    #ClassifiedsMaster {
+        #SingleItem {
+            #Form, #View {
+                #ImageContainer {
+                    width: 30%;
+                }
+
+                #InfoView {
+                    width: 55%;
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 1280px) {
+    #contentBox {
+        margin-right: 0px;
+        margin-left: 0px;
+        min-width: 90%;
+    }
+
+    #ClassifiedsMaster {
+        #SideNav {
+            width: 20%;
+        }
+
+        #Main {
+            width: 75%;
+
+            .ItemResults {
+                .item {
+                    width: 28%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1175px) {
+    #ClassifiedsMaster {
+        #SideNav {
+            width: 30%;
+        }
+
+        #Main {
+            width: 65%;
+        }
+
+        #SingleItem {
+            #Form, #View {
+                #FormButtons {
+                    width: 35%;
+                }
+            }
+        }
+    }   
+}
+
+@media (max-width: 1030px)
+{
+    #ClassifiedsMaster {
+        #SideNav {
+            width: 30%;
+        }
+
+        #SingleItem {
+            #Form, #View {
+                #ImageContainer {
+                    width: 90%;
+                }
+            }
+        }        
+    }  
+}
+
+@media (max-width: 900px) {
+    #ClassifiedsMaster {
+        #SingleItem {
+            #View {
+                #ImageContainer {
+                    display: none;
+                }
+
+                #InfoView {
+                    width: 90%;
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 850px) {
+    #ClassifiedsMaster {
+        #SideNav {
+            width: 100%;
+
+            .section {
+                .sectionTitle
+                {
+                    .ShowArrow {
+                        display: inline-block !important;
+                    }
+                }
+
+                .sectionItems {
+                    display: none;
+                }
+            }
+        }
+
+        #Main {
+            width: 100%;
+        }
+
+        #SingleItem {
+            #Form, #View {
+                .column {
+                    width: 50%;
+                }
+
+                #FormButtons {
+                    width: 40%;
+                }
+
+                #ImageContainer, #InfoView {
+                    .attachments {
+                        .attachmentContainer {
+                            height: 60px;
+
+                            .attachment {
+                                height:60px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }   
+}
+
+@media (max-width: 777px) {
+    #ClassifiedsMaster {
+        #Main {
+            .ItemResults {
+                .item {
+                    width: 40%;
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 685px) {
+    #ClassifiedsMaster {
+        #SideNav {
+            width: 80%;
+        }
+
+        #Main {
+            width: 80%;
+
+            .ItemResults {
+                .item {
+                    width: 100%;
+                    margin-bottom: 10px;
+
+                    .thumbnail {
+                        width: 30%;
+                    }
+
+                    .info {
+                        position: unset;
+                        width: 60%;
+                    }
+                }
+            }
+        }
+
+        #SingleItem {
+            #Form, #View {
+                #FormButtons {
+                    width: 50%;
+                }
+            }
+        }        
+    }    
+}
+
+@media (max-width: 565px) {
+    #ClassifiedsMaster {
+        #SingleItem {
+            #Form, #View {
+                #FormButtons {
+                    width: 60%;
+                }
+            }
+        }        
+    }    
+}

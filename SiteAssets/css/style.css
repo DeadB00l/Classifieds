@@ -1,0 +1,303 @@
+[v-cloak] {
+  display: none; }
+
+#sideNavBox {
+  display: none; }
+
+#ClassifiedsMaster {
+  width: 100%;
+  float: left; }
+  #ClassifiedsMaster div {
+    width: 100%;
+    float: left; }
+  #ClassifiedsMaster #SideNav {
+    width: 13%;
+    margin-right: 20px; }
+    #ClassifiedsMaster #SideNav .buttonMenu {
+      margin-bottom: 10px; }
+    #ClassifiedsMaster #SideNav .section {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid silver;
+      width: 90%; }
+      #ClassifiedsMaster #SideNav .section .sectionTitle {
+        font-weight: bold;
+        position: relative; }
+        #ClassifiedsMaster #SideNav .section .sectionTitle .ShowHideArrow {
+          position: absolute;
+          top: 0px;
+          right: 3px;
+          display: none;
+          width: 20px;
+          cursor: pointer; }
+          #ClassifiedsMaster #SideNav .section .sectionTitle .ShowHideArrow img {
+            width: 20px; }
+      #ClassifiedsMaster #SideNav .section .active {
+        background-color: silver !important;
+        font-weight: bold;
+        color: white; }
+      #ClassifiedsMaster #SideNav .section .sectionItems .edit {
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        width: 22px;
+        height: 19px;
+        cursor: pointer;
+        border: 1px solid white; }
+        #ClassifiedsMaster #SideNav .section .sectionItems .edit:hover {
+          border: 1px solid silver; }
+      #ClassifiedsMaster #SideNav .section .sectionItems .title {
+        cursor: pointer;
+        padding: 10px;
+        position: relative;
+        width: 90%; }
+        #ClassifiedsMaster #SideNav .section .sectionItems .title:hover {
+          background-color: #efefef;
+          color: black; }
+      #ClassifiedsMaster #SideNav .section .sectionItems .subcategories .sub {
+        position: relative;
+        padding: 5px;
+        padding-left: 30px;
+        width: 80%;
+        cursor: pointer; }
+        #ClassifiedsMaster #SideNav .section .sectionItems .subcategories .sub:hover {
+          background-color: #efefef; }
+        #ClassifiedsMaster #SideNav .section .sectionItems .subcategories .sub .edit {
+          top: 3px; }
+  #ClassifiedsMaster #Main {
+    width: 83%; }
+    #ClassifiedsMaster #Main #Search input[type='text'] {
+      width: 40%;
+      height: 25px; }
+    #ClassifiedsMaster #Main .ItemResults {
+      width: 100%;
+      margin-bottom: 20px; }
+      #ClassifiedsMaster #Main .ItemResults .moreContainer {
+        margin-top: 10px; }
+      #ClassifiedsMaster #Main .ItemResults .header {
+        font-weight: bold;
+        font-size: 16pt;
+        padding: 10px; }
+      #ClassifiedsMaster #Main .ItemResults #MessageLabel, #ClassifiedsMaster #Main .ItemResults .norecords {
+        padding: 10px;
+        width: 90%;
+        float: left;
+        background-color: pink;
+        border: 1px solid red;
+        font-weight: bold; }
+      #ClassifiedsMaster #Main .ItemResults .item {
+        position: relative;
+        width: 20%;
+        margin-right: 3px;
+        margin-top: 3px;
+        padding: 10px;
+        height: 100px;
+        border: 1px solid silver;
+        cursor: pointer; }
+        #ClassifiedsMaster #Main .ItemResults .item:hover {
+          background-color: #efefef; }
+        #ClassifiedsMaster #Main .ItemResults .item .sold, #ClassifiedsMaster #Main .ItemResults .item .expired {
+          position: absolute;
+          top: 5px;
+          left: -5px;
+          padding: 10px;
+          background-color: pink;
+          border: 1px solid red;
+          font-weight: bold;
+          width: 35%; }
+        #ClassifiedsMaster #Main .ItemResults .item .admin {
+          position: absolute;
+          top: 3px;
+          right: 0px;
+          cursor: pointer;
+          z-index: 100;
+          width: 50px; }
+          #ClassifiedsMaster #Main .ItemResults .item .admin .edit {
+            width: 20px;
+            margin-left: 3px; }
+        #ClassifiedsMaster #Main .ItemResults .item .thumbnail {
+          overflow-y: hidden;
+          height: 100px;
+          width: 50%;
+          margin-right: 5px; }
+          #ClassifiedsMaster #Main .ItemResults .item .thumbnail img {
+            width: 100%; }
+        #ClassifiedsMaster #Main .ItemResults .item .info {
+          width: 45%;
+          margin-top: 10px; }
+          #ClassifiedsMaster #Main .ItemResults .item .info .title {
+            font-weight: bold; }
+  #ClassifiedsMaster #SingleItem {
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.5); }
+    #ClassifiedsMaster #SingleItem #Form, #ClassifiedsMaster #SingleItem #View {
+      position: relative;
+      background-color: white;
+      opacity: 1.0 !important;
+      padding: 20px;
+      padding-bottom: 60px;
+      width: 60%;
+      margin-left: 20%;
+      margin-top: 25px;
+      margin-bottom: 23px; }
+      #ClassifiedsMaster #SingleItem #Form input[type="file"], #ClassifiedsMaster #SingleItem #View input[type="file"] {
+        width: 100%; }
+      #ClassifiedsMaster #SingleItem #Form input[type="text"], #ClassifiedsMaster #SingleItem #Form select, #ClassifiedsMaster #SingleItem #View input[type="text"], #ClassifiedsMaster #SingleItem #View select {
+        width: 75%;
+        height: 25px; }
+      #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 20%; }
+      #ClassifiedsMaster #SingleItem #Form #CloseBtn, #ClassifiedsMaster #SingleItem #View #CloseBtn {
+        position: absolute;
+        top: 5px;
+        right: 5px; }
+      #ClassifiedsMaster #SingleItem #Form .column, #ClassifiedsMaster #SingleItem #View .column {
+        width: 33%; }
+      #ClassifiedsMaster #SingleItem #Form .fieldContainer, #ClassifiedsMaster #SingleItem #View .fieldContainer {
+        margin: 5px 0px; }
+        #ClassifiedsMaster #SingleItem #Form .fieldContainer textarea, #ClassifiedsMaster #SingleItem #View .fieldContainer textarea {
+          width: 90%;
+          height: 80px; }
+      #ClassifiedsMaster #SingleItem #Form #ImageContainer img, #ClassifiedsMaster #SingleItem #View #ImageContainer img {
+        width: 100% !important; }
+      #ClassifiedsMaster #SingleItem #Form #ImageContainer #FirstImage, #ClassifiedsMaster #SingleItem #View #ImageContainer #FirstImage {
+        width: 100%;
+        height: 600px;
+        overflow-y: hidden; }
+      #ClassifiedsMaster #SingleItem #Form #ImageContainer .attachments .attachmentContainer, #ClassifiedsMaster #SingleItem #View #ImageContainer .attachments .attachmentContainer {
+        width: 23%;
+        height: 100px;
+        margin-right: 5px;
+        margin-top: 5px; }
+        #ClassifiedsMaster #SingleItem #Form #ImageContainer .attachments .attachmentContainer .attachment, #ClassifiedsMaster #SingleItem #View #ImageContainer .attachments .attachmentContainer .attachment {
+          position: relative;
+          width: 100%;
+          overflow-y: hidden;
+          max-height: 100px;
+          border: 1px solid silver; }
+          #ClassifiedsMaster #SingleItem #Form #ImageContainer .attachments .attachmentContainer .attachment .delete, #ClassifiedsMaster #SingleItem #View #ImageContainer .attachments .attachmentContainer .attachment .delete {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            cursor: pointer;
+            width: 20px; }
+      #ClassifiedsMaster #SingleItem #Form #InfoView img, #ClassifiedsMaster #SingleItem #View #InfoView img {
+        width: 100% !important; }
+      #ClassifiedsMaster #SingleItem #Form #InfoView #FirstImage, #ClassifiedsMaster #SingleItem #View #InfoView #FirstImage {
+        width: 100%;
+        height: 600px;
+        overflow-y: hidden; }
+      #ClassifiedsMaster #SingleItem #Form #InfoView .attachments .attachment, #ClassifiedsMaster #SingleItem #View #InfoView .attachments .attachment {
+        position: relative;
+        width: 23%;
+        overflow-y: hidden;
+        width: 23%;
+        height: 100px;
+        margin-right: 5px;
+        margin-top: 5px;
+        border: 1px solid silver; }
+        #ClassifiedsMaster #SingleItem #Form #InfoView .attachments .attachment .delete, #ClassifiedsMaster #SingleItem #View #InfoView .attachments .attachment .delete {
+          position: absolute;
+          top: 1px;
+          right: 1px;
+          cursor: pointer;
+          width: 20px; }
+      #ClassifiedsMaster #SingleItem #Form #InfoView fieldset, #ClassifiedsMaster #SingleItem #View #InfoView fieldset {
+        padding: 10px; }
+        #ClassifiedsMaster #SingleItem #Form #InfoView fieldset legend, #ClassifiedsMaster #SingleItem #View #InfoView fieldset legend {
+          font-weight: bold; }
+      #ClassifiedsMaster #SingleItem #Form .half, #ClassifiedsMaster #SingleItem #View .half {
+        width: 45%;
+        padding: 20px; }
+
+@media (max-width: 1515px) {
+  #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+    width: 30%; } }
+
+@media (max-width: 1340px) {
+  #ClassifiedsMaster #SingleItem #Form #ImageContainer, #ClassifiedsMaster #SingleItem #View #ImageContainer {
+    width: 30%; }
+  #ClassifiedsMaster #SingleItem #Form #InfoView, #ClassifiedsMaster #SingleItem #View #InfoView {
+    width: 55%; } }
+
+@media (max-width: 1280px) {
+  #contentBox {
+    margin-right: 0px;
+    margin-left: 0px;
+    min-width: 90%; }
+  #ClassifiedsMaster #SideNav {
+    width: 20%; }
+  #ClassifiedsMaster #Main {
+    width: 75%; }
+    #ClassifiedsMaster #Main .ItemResults .item {
+      width: 28%; } }
+
+@media (max-width: 1175px) {
+  #ClassifiedsMaster #SideNav {
+    width: 30%; }
+  #ClassifiedsMaster #Main {
+    width: 65%; }
+  #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+    width: 35%; } }
+
+@media (max-width: 1030px) {
+  #ClassifiedsMaster #SideNav {
+    width: 30%; }
+  #ClassifiedsMaster #SingleItem #Form #ImageContainer, #ClassifiedsMaster #SingleItem #View #ImageContainer {
+    width: 90%; } }
+
+@media (max-width: 900px) {
+  #ClassifiedsMaster #SingleItem #View #ImageContainer {
+    display: none; }
+  #ClassifiedsMaster #SingleItem #View #InfoView {
+    width: 90%; } }
+
+@media (max-width: 850px) {
+  #ClassifiedsMaster #SideNav {
+    width: 100%; }
+    #ClassifiedsMaster #SideNav .section .sectionTitle .ShowArrow {
+      display: inline-block !important; }
+    #ClassifiedsMaster #SideNav .section .sectionItems {
+      display: none; }
+  #ClassifiedsMaster #Main {
+    width: 100%; }
+  #ClassifiedsMaster #SingleItem #Form .column, #ClassifiedsMaster #SingleItem #View .column {
+    width: 50%; }
+  #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+    width: 40%; }
+  #ClassifiedsMaster #SingleItem #Form #ImageContainer .attachments .attachmentContainer, #ClassifiedsMaster #SingleItem #Form #InfoView .attachments .attachmentContainer, #ClassifiedsMaster #SingleItem #View #ImageContainer .attachments .attachmentContainer, #ClassifiedsMaster #SingleItem #View #InfoView .attachments .attachmentContainer {
+    height: 60px; }
+    #ClassifiedsMaster #SingleItem #Form #ImageContainer .attachments .attachmentContainer .attachment, #ClassifiedsMaster #SingleItem #Form #InfoView .attachments .attachmentContainer .attachment, #ClassifiedsMaster #SingleItem #View #ImageContainer .attachments .attachmentContainer .attachment, #ClassifiedsMaster #SingleItem #View #InfoView .attachments .attachmentContainer .attachment {
+      height: 60px; } }
+
+@media (max-width: 777px) {
+  #ClassifiedsMaster #Main .ItemResults .item {
+    width: 40%; } }
+
+@media (max-width: 685px) {
+  #ClassifiedsMaster #SideNav {
+    width: 80%; }
+  #ClassifiedsMaster #Main {
+    width: 80%; }
+    #ClassifiedsMaster #Main .ItemResults .item {
+      width: 100%;
+      margin-bottom: 10px; }
+      #ClassifiedsMaster #Main .ItemResults .item .thumbnail {
+        width: 30%; }
+      #ClassifiedsMaster #Main .ItemResults .item .info {
+        position: unset;
+        width: 60%; }
+  #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+    width: 50%; } }
+
+@media (max-width: 565px) {
+  #ClassifiedsMaster #SingleItem #Form #FormButtons, #ClassifiedsMaster #SingleItem #View #FormButtons {
+    width: 60%; } }

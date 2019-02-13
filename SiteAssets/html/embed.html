@@ -1,0 +1,216 @@
+<div id="ClassifiedsMaster">
+    <div id="SideNav">
+        <div class='buttonMenu'>
+            <input type='button' value='New Item' v-on:click="NewItemClick();" />
+            <input type='button' value='My Items' v-on:click="MyItemsClick();" />
+        </div>
+        <div class="section">
+            <div class="sectionTitle">
+                Categories
+                <div id="ShowCategories" class='ShowHideArrow ShowArrow' v-on:click="MenuHandler('ShowCategories');">
+                    <img src="/sites/classifieds/siteassets/downArrow.png" width="20"/>
+                </div>
+                <div id="HideCategories" class='ShowHideArrow' v-on:click="MenuHandler('HideCategories');">
+                    <img src="/sites/classifieds/siteassets/upArrow.png" width="20" />
+                </div>                
+            </div>
+            <div class="sectionItems" v-for="cat in categories" v-if="categories.length > 0">
+                <div class='title' data-id='{{ cat.ID }}' v-cloak v-on:click="CategoryClick('Category', cat);" v-bind:class="{ active: cat.ID == selectedCategory && selectedSubCategory === 0 }">
+                    {{ cat.Title }}
+                    <div class="edit" title="Clear Filter" v-show="selectedCategory === cat.ID" v-on:click.stop="ClearCategoryFilter(cat);">
+                        <img src="/sites/classifieds/siteassets/delete.png" />
+                    </div>
+                </div>
+                <div class='subcategories' v-for="sub in cat.subCategories">
+                    <div class='sub' v-on:click="SubCategoryClick('SubCategory', sub);" v-bind:class="{ active: sub.ID == selectedSubCategory }" data-id='{{ sub.ID }}'>
+                        {{ sub.Title }}
+                        <div class="edit" title="Clear Filter" v-show="selectedCategory === cat.ID" v-on:click.stop="ClearSubCategoryFilter(cat);">
+                            <img src="/sites/classifieds/siteassets/delete.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class='sectionTitle'>
+                Types
+                <div id="ShowTypes" class='ShowHideArrow ShowArrow' v-on:click="MenuHandler('ShowTypes');">
+                    <img src="/sites/classifieds/siteassets/downArrow.png" width="20" />
+                </div>
+                <div id="HideTypes" class='ShowHideArrow' v-on:click="MenuHandler('HideTypes');">
+                    <img src="/sites/classifieds/siteassets/upArrow.png" width="20" />
+                </div>
+            </div>
+            <div class='sectionItems' v-for="type in types" v-bind:class="{ active: type.ID == selectedActionType }" v-if="types.length > 0">
+                <div class='title' data-id='{{ type.ID }}' v-cloak v-on:click="TypeClick(type.ID);">
+                    {{ type.Title }}
+                    <div class="edit" title="Clear Filter" v-show="selectedActionType === type.ID" v-on:click.stop="ClearActionTypeFilter();">
+                            <img src="/sites/classifieds/siteassets/delete.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Main">
+        <div id="Search">
+            <input type="text" placeholder="Enter Search Here..." v-model.trim="qryEntry" v-on:keyup="EnterCheck" />
+            <input type="button" value="Go" v-on:click="GetResults('Title', 32);" />
+        </div>
+        <div id="Results" class='ItemResults' v-for="(item, $index) in items" v-if="(item.results.length > 0)||(($index === 0)&&((qry.length > 0)||(selectedCategory > 0)||(selectedSubCategory > 0)||(selectedActionType > 0)))">
+            <div class='header'>{{ item.title }}</div>
+            <div class='norecords' v-if='(item.results.length === 0)&&(isLoading === false)'>Sorry, no items found for this criteria</div>
+            <div class="Loading" v-show="isLoading">
+                <img align="absmiddle" alt="Loading ..." src="/_layouts/15/images/hig_progcircle_loading24.gif" border="0" /> Loading Results ...
+            </div>
+            <div class="item" v-for="rec in item.results" v-on:click="GetItem(rec.ID, 'View');">
+                <div class="sold" v-if="rec.isSold">Sold</div>
+                <div class="expired" v-if="(rec.isExpired === true)&&(rec.isSold === false)">Expired</div>
+                <div class="admin" v-if="rec.canEdit">
+                        <div class="edit" title="Edit Item" v-on:click.stop="GetItem(rec.ID, 'Edit');">
+                            <img src="/sites/classifieds/siteassets/edit.png" />
+                        </div>
+                        <div class="edit" title="Delete Item" v-on:click.stop="DeleteItemClick(rec.ID);">
+                            <img src="/sites/classifieds/siteassets/delete.png" />
+                        </div>
+                    </div>
+                <div class="thumbnail">
+                    <img width='100%' v-if="(rec.MainImage != null)" v-bind:src="rec.MainImage.Data" />
+                </div>
+                <div class="info">
+                    <div class="title">{{ rec.Title }}</div>
+                    <div class="amount">${{ rec.Amount }}</div>
+                </div>
+            </div>
+            <div class='moreContainer'>
+                <input type="button" value="More" v-show="(item.results.length >= moreIncrement)&&(item.results.length % moreIncrement === 0)" v-on:click="MoreClick(item);" />
+            </div>
+        </div>
+    </div>
+    <div id="SingleItem" v-if="singleItem != null">
+        <div id="Form" v-show="actionType == 'Edit'">
+            <h1 v-show="singleItem.ID === 0">Create Item</h1>
+            <h1 v-show="singleItem.ID > 0">Update Item</h1>
+            <input type="button" id='CloseBtn' title='Close' value="X" v-on:click="CancelClick();">
+            <label id="MessageLabel" v-show="errMsg.length > 0" v-html="errMsg"></label><br />
+            <div class='column'>
+                <div class='fieldContainer'>
+                    <b>Title: </b><br />
+                    <input type='text' v-model.trim="singleItem.Title" placeholder="Enter Item Title Here" />
+                </div>
+                <div class='fieldContainer'>
+                    <b>Amount: </b><br />
+                    $<input type='number' v-model="singleItem.Amount" placeholder="Enter Item Amount Here" />
+                </div>
+                <div class='fieldContainer'>
+                    <b>Category: </b><br />
+                    <select v-model="singleItem.CategoryID" v-on:change="CategoryChange();">
+                        <option v-for="cat in categories" v-bind:value="cat.ID">{{ cat.Title }}</option>
+                    </select>
+                </div>
+                <div class='fieldContainer' v-show="subCategories.length > 0">
+                    <b>Subcategory: </b><br />
+                    <select v-model="singleItem.SubCategoryID">
+                        <option v-for="sub in subCategories" v-bind:value="sub.ID">{{ sub.Title }}</option>
+                    </select>
+                </div>
+                <div class='fieldContainer'>
+                    <b>Type: </b><br />
+                    <select v-model="singleItem.ActionTypeID">
+                        <option v-for="type in types" v-bind:value="type.ID">{{ type.Title }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class='column'>
+                <div class='fieldContainer'>
+                    <b>Phone: </b><br />
+                    <input type='text' v-model="singleItem.Phone" placeholder="(xxx)-xxx-xxxx" />
+                </div>
+                <div class='fieldContainer'>
+                    <b>Email: </b><br />
+                    <input type='text' v-model="singleItem.Email" placeholder="account@email.com" />
+                </div>
+                <div class='fieldContainer'>
+                    <b>Description:</b><br />
+                    <textarea v-model.trim="singleItem.Description" col='10' row='6' placeholder="Enter Description Here"></textarea>
+                </div>
+            </div>
+            <div id='ImageContainer' class='column'>
+                <div id='ImageForm' v-show="actionType == 'Edit'">
+                    <div class='attachments'>
+                        <div class='attachmentContainer' v-show="singleItem.AttachedImages.length > 0" v-for="(img, $index) in singleItem.AttachedImages">
+                            <div class='attachment'>
+                                <div class="delete" v-on:click.stop="DeleteAttachment($index);" title='Remove Image'>
+                                    <img src="/sites/classifieds/siteassets/delete.png" />
+                                </div>
+                                <img v-bind:src="img.Data" width='100%' valign='middle' />
+                            </div>
+                        </div>
+                    </div>
+                    <b>Upload Attachment:</b><br />
+                    <input id='attachmentUpload' type='file' multiple accept="image/png,image/jpeg" v-on:change="OnFileChange" />
+                </div>
+                <div id='ImageView' v-show="actionType == 'View'">
+                    <div id='MasterImage'>
+    
+                    </div>
+                    <div id='OtherImages'>
+                        <div class='thumbnail'></div>
+                    </div>
+                </div>
+            </div>
+            <div id='FormButtons'>
+                <div class="Uploading" v-show="isSaving">
+                    <img align="absmiddle" alt="Loading ..." src="/_layouts/15/images/hig_progcircle_loading24.gif" border="0" /> Saving ...
+                </div>
+                <input type="button" value="Save" v-on:click="SaveClick();" v-show="!isSaving">
+                <input type="button" value="Cancel" v-on:click="CancelClick();" v-show="!isSaving">
+            </div>
+        </div>
+        <div id='View' v-if="actionType == 'View'">
+            <input type="button" id='CloseBtn' title='Close' value="X" v-on:click="CancelClick();">
+            <div class='half' id='ImageContainer'>
+                <div id='FirstImage'>
+                    <img v-bind:src="singleItem.MainImage.Data" />
+                </div>
+            </div>
+            <div class='half' id='InfoView'>
+                <h1><b>
+                    {{ singleItem.Title }}
+                </b></h1><br />
+                <h3><b>
+                    ${{ singleItem.Amount }}
+                </b></h3>
+                <br />
+                <b>Views: </b>{{ singleItem.Views }}                
+                <br /><br />
+                <b>Description:</b><br />
+                {{ singleItem.Description }}
+                
+                <br /><br />
+                <fieldset>
+                    <legend>Contact Info</legend>
+                    <b>Seller: </b>{{ singleItem.EmployeeName }}<br />
+                    <b>Phone: </b>{{ singleItem.Phone }}<br />
+                    <b>Email: </b>
+                    <a v-bind:href='singleItem.Link'>
+                        {{ singleItem.Email }}
+                    </a>
+                </fieldset>
+                <br />
+                <fieldset>
+                    <legend>Mouse over to enlarge image</legend>
+                    <div class='attachments'>
+                        <div class='attachment' v-for='(image, $index) in singleItem.AttachedImages' v-on:mouseover="EnlargeImage($index);">
+                            <img width='100%' v-bind:src="image.Data" />
+                        </div>
+                    </div>                    
+                </fieldset>
+            </div>
+        </div>        
+    </div>
+</div>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/vue@2.5.2/dist/vue.min.js"></script>
+<script type="text/javascript" src="//unpkg.com/axios@0.5.4/dist/axios.min.js"></script>
+<script type="text/javascript" src="/sites/classifieds/siteassets/index.min.js"></script>
+<link type="text/css" rel="Stylesheet" href="/sites/classifieds/siteassets/style.min.css" />
